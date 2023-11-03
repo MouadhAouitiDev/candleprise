@@ -9,8 +9,7 @@
 $context = Timber::context();
 
  
-$context['HomeData'] = get_posts(); 
-
+$context['HomeData'] = get_posts();
 
 
 

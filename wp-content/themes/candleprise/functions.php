@@ -18,7 +18,9 @@ if ( file_exists( $composer_autoload ) ) {
 	require_once $composer_autoload;
 	$timber = new Timber\Timber();
 }
-
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page();
+}
 /**
  * This ensures that Timber is loaded and available as a PHP class.
  * If not, it gives an error message to help direct developers on where to activate
@@ -85,6 +87,10 @@ class StarterSite extends Timber\Site {
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::context();';
 		$context['menu']  = new Timber\Menu();
+		$context['primary']  = new Timber\Menu('primary');
+		$context['Header_top']  = new Timber\Menu('Header_top');
+		$context['first_footer']  = new Timber\Menu('first_footer');
+		$context['second_footer']  = new Timber\Menu('second_footer');
 		$context['site']  = $this;
 		return $context;
 	}
@@ -164,5 +170,17 @@ class StarterSite extends Timber\Site {
 
 }
 
+/**
+ * Register Menus
+ */
+function register_custom_menus() {
+	register_nav_menus([
+		'primary' => 'Menu primaire',
+		'Header_top' => 'Menu Top Header',
+		'first_footer' => 'Menu Footer 1',
+		'second_footer' => 'Menu Footer 2',
+	]);
+}
 
+add_action('after_setup_theme', 'register_custom_menus');
 new StarterSite();

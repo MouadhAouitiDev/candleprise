@@ -1,1 +1,45 @@
-Copyright {{"now"|date('Y')}}
+
+
+<footer class="footer-class bg-black text-white">
+    <div class="container">
+        <div class="row">
+            <div class="firt-colonne col-md-3">
+                <div class="company">
+                    <img src="http://candleprise.test/wp-content/uploads/2023/11/imageonline-co-textimage-e1698942382919.png" alt="logo footer">
+                </div>
+                <div class="text-left mx-auto logo-footer-candleprise">
+                    <img src="http://candleprise.test/wp-content/uploads/2023/11/logo-footer-2.png" alt="Logo">
+                </div>
+                <ul class="list-unstyled">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>À propos</h5>
+                {% if function('has_nav_menu', 'first_footer') %}
+                    <nav id="footer-menu-1" class="footer-menu-1">
+                        {{ function('wp_nav_menu', {menu: 'first_footer', menu_class: 'list-unstyled-sous-title'})|raw }}
+                    </nav>
+                {% endif %}
+
+            </div>
+            <div class="col-md-3">
+                <h5>Informations</h5>
+                {% if function('has_nav_menu', 'second_footer') %}
+                    <nav id="footer-menu-2" class="footer-menu-2">
+                        {{ function('wp_nav_menu', {menu: 'second_footer', menu_class: 'list-unstyled-sous-title'})|raw }}
+                    </nav>
+                {% endif %}
+            </div>
+            <div class="col-md-3 newsletter">
+                {% include 'partial/newsletter.twig' %}
+            </div>
+        </div>
+        <div class="row">
+            {% include 'partial/bottom-footer.twig' %}
+        </div>
+      </div>
+</footer>

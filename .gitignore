@@ -36,6 +36,8 @@ wp-content/themes/candleprise/bin/
 wp-content/themes/candleprise/.travis.yml
 wp-content/debug.log
 wp-content/themes/candleprise/LICENSE
+wp-content/logs/
+
 
 
 
