@@ -1,6 +1,6 @@
 
 
-<footer class="footer-class bg-black text-white">
+<footer class="footer-class  bg-black text-white">
     <div class="container">
         <div class="row">
             <div class="firt-colonne col-md-3">
@@ -19,20 +19,31 @@
             </div>
             <div class="col-md-3">
                 <h5>À propos</h5>
-                {% if function('has_nav_menu', 'first_footer') %}
+                {% set FirstFooterMenu = function('wp_get_nav_menu_items', 'first_footer') %}
+                {% if FirstFooterMenu is not empty %}
                     <nav id="footer-menu-1" class="footer-menu-1">
                         {{ function('wp_nav_menu', {menu: 'first_footer', menu_class: 'list-unstyled-sous-title'})|raw }}
                     </nav>
+                {% else %}
+                    <ul class="list-unstyled">
+                        <li>Aucun élément disponible dont vous avez besoin pour créer votre menu</li>
+                    </ul>
                 {% endif %}
 
             </div>
             <div class="col-md-3">
                 <h5>Informations</h5>
-                {% if function('has_nav_menu', 'second_footer') %}
+                {% set secondFooterMenu = function('wp_get_nav_menu_items', 'second_footer') %}
+                {% if secondFooterMenu is not empty %}
                     <nav id="footer-menu-2" class="footer-menu-2">
                         {{ function('wp_nav_menu', {menu: 'second_footer', menu_class: 'list-unstyled-sous-title'})|raw }}
                     </nav>
+                {% else %}
+                    <ul class="list-unstyled">
+                        <li>Aucun élément disponible dont vous avez besoin pour créer votre menu</li>
+                    </ul>
                 {% endif %}
+
             </div>
             <div class="col-md-3 newsletter">
                 {% include 'partial/newsletter.twig' %}
